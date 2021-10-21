@@ -1,4 +1,5 @@
-from app import User, db
+from users.models.user import User
+from app import db
 
 
 def add_user(name, mail):

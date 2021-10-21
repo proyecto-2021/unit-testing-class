@@ -1,7 +1,7 @@
 import os
 import pytest
 from app import create_app, db
-from daos.user_dao import add_user, get_user_by_name
+from users.daos.user_dao import add_user, get_user_by_name
 
 
 @pytest.fixture(scope='module')
@@ -30,7 +30,7 @@ def test_insert_admin_user(client):
     stored_user = get_user_by_name(n)
     assert stored_user.username == 'admin'
 
-
+'''
 def test_insert_user_jose(client):
     # arrange
     n = 'jose'
@@ -40,6 +40,7 @@ def test_insert_user_jose(client):
     # assert
     stored_user = get_user_by_name(n)
     assert stored_user.username == 'jose'
+'''
 
 
 def test_insert_user_twice(client):
@@ -50,7 +51,7 @@ def test_insert_user_twice(client):
     add_user(n, m)
     # assert
     with pytest.raises(ValueError, match=r"User with name raul already in the DB"):
-        add_user(n, m)
+        add_user(n, 'raul@anothermail.com')
 
 
 
